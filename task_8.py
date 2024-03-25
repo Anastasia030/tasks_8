@@ -3,8 +3,19 @@ import functools
 
 
 def exceptional_situations(function):
+    """
+    The decorator records exceptional situations and the time of their occurrence
+    :param function: wrapped function
+    :return: function that transforms
+    """
     @functools.wraps(function)
     def wrapper(*args, **kwargs):
+        """
+        The function that creates a file with the name of the exception and the time of its occurrence
+        :param args: function parameters
+        :param kwargs: default function parameters
+        :return: string containing the name of the exception
+        """
         try:
             return function(*args, **kwargs)
 
@@ -19,6 +30,11 @@ def exceptional_situations(function):
 
 @exceptional_situations
 def simple_number(number):
+    """
+    The function checks whether the number is prime
+    :param number: any number
+    :return: Boolean value
+    """
     count = 0
     number_new = int(number)
     for i in range(1, int(number_new ** 0.5)+1):
@@ -30,4 +46,3 @@ def simple_number(number):
 
 
 print(simple_number(input()))
-

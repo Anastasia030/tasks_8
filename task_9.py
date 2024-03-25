@@ -6,10 +6,23 @@ import random
 
 
 def to_format(format=None):
+    """
+    A decorator that converts the result of a function to a given format
+    :param format: a string containing the requested format
+    :return: the function that transformed the function
+    """
     def decorator(function):
-
+        """
+        :param function: wrapped function
+        :return: function that transforms
+        """
         @functools.wraps(function)
         def wrapper(*args, **kwargs):
+            """
+            :param args: function parameters
+            :param kwargs: default function parameters
+            :return: function that returns the requested format
+            """
             result = function(*args, **kwargs)
 
             if format is None:
@@ -35,11 +48,20 @@ def to_format(format=None):
 
 @to_format()
 def printer(**kwargs):
+    """
+    :param kwargs: unlimited number of parameters
+    :return: unpacked received object
+    """
     return kwargs
 
 
 @to_format('yaml')
 def winner(**kwargs):
+    """
+    The function returns the winner of the draw
+    :param kwargs: unlimited number of parameters
+    :return: random dictionary key value
+    """
     lucky = []
     for key, val in kwargs.items():
         lucky.append(random.choice(val))

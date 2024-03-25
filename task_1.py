@@ -1,4 +1,8 @@
 def register(symbol):
+    """
+    :param symbol: line elements
+    :return: uppercase characters
+    """
     return symbol.isupper()
 
 

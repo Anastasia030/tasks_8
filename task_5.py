@@ -2,6 +2,11 @@ from functools import reduce
 
 
 def multiply(first, second):
+    """
+    :param first: the first number
+    :param second: the second number
+    :return: multiplication of two numbers
+    """
     return first * second
 
 
